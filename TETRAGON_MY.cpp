@@ -21,14 +21,15 @@ int main()
 	int AB = mag(xA, yA, xB, yB);
 	int BC = mag(xB, yB, xC, yC);
 	int CD = mag(xC, yC, xD, yD);
+	int DA = mag(xD, yD, xA, yA);
 	bool square = isSquare(xA, yA, xB, yB, xC, yC);
 	
 	ofstream ofs;
 	ofs.open("TETRAGON.OUT");
-	if (AB == BC && AB == CD) {
+	if (AB == BC && AB == CD && BC == DA) {
 		if (square) ofs << 1; 
 		else ofs << 3;
-	} else if (AB == CD) {
+	} else if (AB == CD && BC == DA) {
 		if (square) ofs << 2; 
 		else ofs << 4;
 	} else {
