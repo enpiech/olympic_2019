@@ -19,8 +19,14 @@ bool isRightBracket(string s) {
 			} else {
 				open.pop();
 			}
+		} else {
+			if (s[i] == ')' || s[i] == '}' || s[i] == ']') {
+				return false;
+			}
 		}
 	}
+	
+	
 	if (!open.empty()) {
 		return false;
 	}
