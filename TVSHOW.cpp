@@ -43,14 +43,14 @@ int main()
 	
 	int r = 0;
 	for (int i = 0; i < n; ++i) {
-		int ci = 1;
-		while (arr[i].s == arr[i + 1].s) {
-			ci++;
-			i++;
-		}
-		if (ci > 1) {
-			r += (ci * (ci - 1) / 2);
-		}
+//		int ci = 1;
+//		while (arr[i].s == arr[i + 1].s) {
+//			ci++;
+//			i++;
+//		}
+//		if (ci > 1) {
+//			r += (ci * (ci - 1) / 2);
+//		}
 		int match = 0;
 		for (int j = i + 1; j < n; ++j) {
 			if (arr[i].t <= arr[j].s) {
