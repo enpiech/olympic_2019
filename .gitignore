@@ -30,3 +30,16 @@
 *.exe
 *.out
 *.app
+olympic/olympic.sln
+olympic/.vs/olympic/v16/.suo
+olympic/.vs/olympic/v16/Browse.VC.db
+olympic/olympic/olympic.cpp
+olympic/olympic/olympic.vcxproj
+olympic/olympic/olympic.vcxproj.filters
+olympic/olympic/olympic.vcxproj.user
+olympic/olympic/Debug/olympic.log
+olympic/olympic/Debug/vc142.idb
+olympic/olympic/Debug/vc142.pdb
+olympic/olympic/Debug/olympic.tlog/CL.command.1.tlog
+olympic/olympic/Debug/olympic.tlog/olympic.lastbuildstate
+olympic/olympic/Debug/olympic.tlog/unsuccessfulbuild

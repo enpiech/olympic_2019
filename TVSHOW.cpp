@@ -1,10 +1,12 @@
 #include <iostream>
 #include <fstream>
 #include <stdlib.h>
+#include <time.h>
 using namespace std;
 
 struct Prog {
-	int s, t;
+	int s;
+	int t;
 };
 
 int compare(const void * a, const void * b) {
@@ -21,6 +23,7 @@ int compare(const void * a, const void * b) {
 
 int main()
 {
+	clock_t tStart = clock();
 	ifstream ifs;
 	ifs.open("TVSHOW.INP");
 	int n;
@@ -39,33 +42,51 @@ int main()
 	}
 	ifs.close();
 	
-	qsort(arr, n, sizeof(Prog), compare);
-	
 	int r = 0;
-	for (int i = 0; i < n; ++i) {
+	int l = 0; 
+	qsort(arr, n, sizeof(Prog), compare);
+	for (int i = 0; i < n - 1; ++i) {
 //		int ci = 1;
 //		while (arr[i].s == arr[i + 1].s) {
 //			ci++;
 //			i++;
 //		}
 //		if (ci > 1) {
-//			r += (ci * (ci - 1) / 2);
-//		}
-		int match = 0;
+//			r += ci / 2 * (ci - 1);
+//		}	
+
 		for (int j = i + 1; j < n; ++j) {
-			if (arr[i].t <= arr[j].s) {
-				match++;
+			l++; 
+			if (arr[i].t > arr[j].s) {
+				++r;
+			} else {
+				break;
 			}
 		} 
-		cout << match << endl;
-		r += n - 1 - i - match;
+
+//		int match = 0;
+//		for (int j = i + 1; j < n; ++j) {
+//			if (arr[i].t <= arr[j].s) {
+//				match++;
+//			}
+//		} 
+//		r += n - 1 - i - match;	
 	}
+
+//	for (int i = 0; i < n - 1; i++) {
+//		for (int j = i + 1; j < n; j++) {
+//			
+//			if (arr[i].s >= arr[j].s && arr[i].s <= arr[j].t || arr[j].s >= arr[i].s && arr[j].s <= arr[i].t) {
+//				r++;
+//			}
+//		}
+//	}
 	
 	ofstream ofs;
 	ofs.open("TVSHOW.OUT");
 	ofs << r;
 	ofs.close();
-	cout << r;
-	
+	cout << l;
+	printf("Time taken: %.2fs\n", (double)(clock() - tStart)/CLOCKS_PER_SEC);
 	return 0;
 }
