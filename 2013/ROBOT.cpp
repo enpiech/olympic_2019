@@ -26,27 +26,28 @@ int main() {
 			}
 			int v = 1;
 			for (k; k >= 0; --k) {
-				while (v + a <= n && arr[v + a] != a && arr[v + a] != (a + b)) {
-					v += a;
-					if (arr[v] == b) {
-						arr[v] = a + b;
-					} else {
-						arr[v] = a;
+				if (a / 2 != b) {
+					while (v + a <= n && arr[v + a] != a && arr[v + a] != (a + b)) {
+						v += a;
+						if (arr[v] == b) {
+							arr[v] = a + b;
+						} else {
+							arr[v] = a;
+						}
+						--k;
 					}
-					--k;
-				}
-				if (a == b / 2) {
-					break;
 				}
 				
-				while (v - b > 1 && arr[v - b] != b && arr[v - b] != (a + b)) {
-					v -= b;
-					if (arr[v] == a) {
-						arr[v] = a + b;
-					} else {
-						arr[v] = b;
+				if (a != b / 2) {
+					while (v - b > 1 && arr[v - b] != b && arr[v - b] != (a + b)) {
+						v -= b;
+						if (arr[v] == a) {
+							arr[v] = a + b;
+						} else {
+							arr[v] = b;
+						}
+						--k;
 					}
-					--k;
 				}
 			}
 			int c = 0;
@@ -57,37 +58,7 @@ int main() {
 			}
 			ofs << n - c << endl;
 			cout << n - c << endl;
-		}
-		
-//		else if (a + b >= n) {
-//			if (a > b) {
-//				s++;
-//				v += a;
-//				while (s != k + 1) {
-//					v -=
-//				}
-//			}
-//			
-//		}
-//		while (s != k + 1) {
-//			if (fuc < v) {
-//				
-//			}
-//			if (v + a < n) {
-//				cout << v << " " << s + 1 << endl;
-//				v += a;
-//				++s;
-//				fuc = v;
-//				arr[v] = true;
-//			} else if (v - b >= 0) {
-//				cout << v << " " << s + 1 << endl;
-//				v -= b;
-//				++s;
-//				fuc = v;
-//				arr[v] = true;
-//			} 
-//		}
-		
+		}	
 	}
 	
 	
