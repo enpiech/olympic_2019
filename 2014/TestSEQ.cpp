@@ -3,7 +3,7 @@
 using namespace std;
 
 int main() {
-	int n = 100;
+	int n = 300000;
 	ofstream ofs;
 	ofs.open("SEQ.INP");
 	ofs << n << endl;
