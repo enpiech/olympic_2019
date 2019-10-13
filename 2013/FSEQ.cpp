@@ -1,4 +1,4 @@
-#include <iostream>
+	#include <iostream>
 #include <fstream>
 #include "math.h"
 using namespace std;
@@ -64,7 +64,7 @@ int main()
 	
 	ofstream ofs;
 	ofs.open("FSEQ.OUT");
-	ofs << maxf;
+	ofs << maxf + 2;
 	ofs.close();
 	
 	return 0;
