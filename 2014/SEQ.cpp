@@ -2,15 +2,43 @@
 #include <fstream>
 using namespace std;
 
+int maxSubArraySum(int a[], int size) 
+{ 
+    int max_so_far = INT_MIN, max_ending_here = 0, 
+       start =0, end = 0, s=0; 
+  
+    for (int i=0; i< size; i++) 
+    { 
+        max_ending_here += a[i]; 
+  
+        if (max_so_far < max_ending_here) 
+        { 
+            max_so_far = max_ending_here; 
+            start = s; 
+            end = i; 
+        } 
+  
+        if (max_ending_here < 0) 
+        { 
+            max_ending_here = 0; 
+            s = i + 1; 
+        } 
+    } 
+    cout << "Maximum contiguous sum is "
+        << max_so_far << endl; 
+    cout << "Starting index "<< start 
+        << endl << "Ending index "<< end << endl; 
+}
+
 int main() {
 	ifstream ifs;
 	ifs.open("SEQ.INP");
 	int n;
 	ifs >> n;
-	long arr[0][n];
-	long max = 0;
+	int arr[n];
+	
 	for (int i = 0; i < n; ++i) {
-		ifs >> arr[0][i];
+		ifs >> arr[i];
 //		if (i > 1) {
 //			arr[1][i] = arr[0][i - 2] + arr[0][i - 1] + arr[0][i];
 //			if (arr[1][i] > max) {
@@ -18,25 +46,26 @@ int main() {
 //			}
 //		}
 	}
-//	arr[1][2] = arr[0][0] + arr[0][1] + arr[0][2];
-	for (int i = 3; i <= n; i+=3) {
-		int t = 0;
-//		cout << i << ":";
-		for (int j = 0; j < i; ++j) {
-			t += arr[0][j];
-		}
-		if (t > max) {
-			max = t;
-		}
-		for (int j = i; j < n; ++j) {
-			t = t - arr[0][j - i] + arr[0][j];
-//			cout << t << "-";
-			if (t > max) {
-				max = t;
-			}
-		}
-//		cout << endl;
-	}
+	int max = maxSubArraySum(arr, n);
+////	arr[1][2] = arr[0][0] + arr[0][1] + arr[0][2];
+//	for (int i = 3; i <= n; i+=3) {
+//		int t = 0;
+////		cout << i << ":";
+//		for (int j = 0; j < i; ++j) {
+//			t += arr[j];
+//		}
+//		if (t > max) {
+//			max = t;
+//		}
+//		for (int j = i; j < n; ++j) {
+//			t = t - arr[j - i] + arr[j];
+////			cout << t << "-";
+//			if (t > max) {
+//				max = t;
+//			}
+//		}
+////		cout << endl;
+//	}
 //	for (int i = 3; i < n; ++i) {
 //		arr[1][i] = arr[1][i - 1] - arr[0][i - 3] + arr[0][i];
 //		if (arr[1][i] > max) {
@@ -68,7 +97,6 @@ int main() {
 
 	ofstream ofs;
 	ofs.open("SEQ.OUT");
-	cout << "kq" << max;
 	ofs << max;
 	ofs.close();
 	system("pause");
